@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Pic from '../../components/Pic.astro';
 import PostCard from '../../components/PostCard.astro';
 import CTABand from '../../components/CTABand.astro';
-import { posts, featuredHref } from '../../data/posts';
+import { posts, featured } from '../../data/posts';
 const cats = ['All', 'Comparisons', 'Ducted', 'Split systems', 'Gas upgrades', 'Rebates', 'Maintenance'];
 ---
 <Base title="Heating & Cooling Advice | Cooper & Vale Blog" description="Straight answers on ducted, split systems, gas upgrades, rebates and maintenance for Melbourne homes." active="blog">
@@ -22,7 +22,7 @@ const cats = ['All', 'Comparisons', 'Ducted', 'Split systems', 'Gas upgrades', '
   </section>
   <section class="bg-white">
     <div class="wrap sec">
-      <a href={featuredHref} class="group grid gap-8 lg:grid-cols-[minmax(0,720px)_minmax(0,1fr)] lg:items-center lg:gap-10 xl:gap-16">
+      <a href={`/blog/${featured[5]}/`} class="group grid gap-8 lg:grid-cols-[minmax(0,720px)_minmax(0,1fr)] lg:items-center lg:gap-10 xl:gap-16">
         <div class="relative"><Pic name="cosy1" alt="Cosy living room (sample imagery)" class="aspect-[36/23] w-full" sizes="(min-width:1024px) 720px, 100vw" eager /><span class="absolute top-4 left-4 rounded-[2px] bg-copper px-2.5 py-1 text-[11px] font-bold tracking-[0.1em] text-white">FEATURED</span></div>
         <div>
           <p class="text-[12px] font-semibold tracking-[0.08em] text-teal-dark uppercase">Comparisons</p>

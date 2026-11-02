@@ -1,0 +1,43 @@
+---
+interface Props { title?: string; id?: string }
+const { title = 'Book your free consult', id = 'f' } = Astro.props;
+const uid = id;
+---
+<div class="rounded-[2px] bg-cream p-6 text-ink sm:p-10 shadow-[0_0_0_1px_#dcd3c4]">
+      <h3 class="text-[26px]">{title}</h3>
+      <form class="quote-form mt-6 grid gap-4" novalidate data-form>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div><label class="field-label" for={`${uid}-name`}>Full name *</label><input class="field" id={`${uid}-name`} name="name" required placeholder="Your name" autocomplete="name" /></div>
+          <div><label class="field-label" for={`${uid}-phone`}>Phone *</label><input class="field" id={`${uid}-phone`} name="phone" type="tel" required placeholder="04XX XXX XXX" autocomplete="tel" /></div>
+        </div>
+        <div><label class="field-label" for={`${uid}-email`}>Email</label><input class="field" id={`${uid}-email`} name="email" type="email" placeholder="you@example.com" autocomplete="email" /></div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div><label class="field-label" for={`${uid}-suburb`}>Suburb *</label><input class="field" id={`${uid}-suburb`} name="suburb" required placeholder="e.g. Rowville" /></div>
+          <div><label class="field-label" for={`${uid}-int`}>Interested in</label>
+            <select class="field" id={`${uid}-int`} name="interest"><option>Ducted reverse cycle</option><option>Split systems</option><option>Gas to reverse cycle upgrade</option><option>Servicing &amp; maintenance</option><option>Not sure yet</option></select></div>
+        </div>
+        <fieldset><legend class="field-label">Home type</legend>
+          <div class="flex flex-wrap gap-2">
+            {['Single storey', 'Double storey', 'Townhouse', 'Not sure'].map((t, i) => <label><input type="radio" name="home" value={t} class="peer sr-only" checked={i === 0} /><span class="chip">{t}</span></label>)}
+          </div>
+        </fieldset>
+        <div><label class="field-label" for={`${uid}-msg`}>Anything we should know?</label><textarea class="field !h-24 py-3" id={`${uid}-msg`} name="msg" placeholder="Cold rooms, current heating, timing…"></textarea></div>
+        <button type="submit" class="btn btn-copper w-full">Book My Free Consult <span aria-hidden="true">→</span></button>
+        <p class="text-[12px] text-muted">We only use your details to arrange your consult.</p>
+        <p class="form-msg hidden rounded-[2px] bg-mint p-3 text-[14px] text-teal-dark" role="status"></p>
+      </form>
+    </div>
+<script>
+  // Demo only: front-end validation, nothing is submitted anywhere.
+  document.querySelectorAll<HTMLFormElement>('form[data-form]').forEach((f) => {
+    f.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const msg = f.querySelector<HTMLElement>('.form-msg')!;
+      const missing = [...f.querySelectorAll<HTMLInputElement>('[required]')].filter((i) => !i.value.trim());
+      msg.classList.remove('hidden');
+      if (missing.length) { msg.textContent = 'Please fill in your name, phone and suburb.'; missing[0].focus(); return; }
+      msg.textContent = 'Thanks! This is a demo site, so nothing was sent. On a live site we would call you within one business day.';
+      f.reset();
+    });
+  });
+</script>

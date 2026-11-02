@@ -1,0 +1,86 @@
+---
+import Base from '../../layouts/Base.astro';
+import Pic from '../../components/Pic.astro';
+import PageHero from '../../components/PageHero.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
+import FAQ from '../../components/FAQ.astro';
+import ConsultForm from '../../components/ConsultForm.astro';
+const cols = ['Ducted reverse cycle', 'Split & multi-head', 'Gas to reverse cycle upgrade'];
+const rows: [string, string, string, string][] = [
+  ['Best for', 'Whole-home comfort, 3+ bedrooms', 'Living areas, bedrooms, extensions', 'Homes with ageing gas ducted heating'],
+  ['What you see inside', 'Slim ceiling outlets + one controller', 'A wall unit in each room', 'Same outlets, new reverse cycle unit'],
+  ['Zoning', 'Up to 8 zones, room by room', 'Each unit controlled separately', 'Re-zoned during the upgrade'],
+  ['Typical install', '1–2 days', 'Half a day per unit', '1–2 days incl. gas disconnect'],
+  ['Running cost', 'Low–medium, zone what you use', 'Lowest per room', 'Usually lower than gas [sample]'],
+  ['Rebates', 'Possible VEU discount [sample]', 'Possible VEU discount [sample]', 'VEU discount often applies [sample]'],
+  ['Investment from', '$X,XXX [sample]', '$X,XXX [sample]', '$X,XXX [sample]'],
+];
+const links = [['View ducted systems →', '/services/ducted-reverse-cycle/'], ['Compare split systems →', '/services/split-systems-reverse-cycle-heating/'], ['Plan your upgrade →', '#gas-upgrades']];
+const details = [
+  { id: 'ducted', img: 'cosy1', alt: 'Living room with ducted heating outlets', t: 'Ducted reverse cycle', d: "One system heats and cools the whole house through slim ceiling outlets. We design the duct runs and zones around how you use each room — so the bedrooms aren't an afterthought.", inc: ['Heat-load calc for every room', 'Zoning design (up to 8 zones)', 'Insulated flexible ducting', 'Wall controller or app control'], cta: 'Explore Ducted Reverse Cycle', href: '/services/ducted-reverse-cycle/' },
+  { id: 'split', img: 'cosy5', alt: 'Open living room with a wall-mounted split system', t: 'Split Systems & Reverse Cycle Heating', d: 'Wall-mounted units for the rooms that need them most. Multi-head systems run several indoor units from one outdoor unit — tidy, efficient and quick to install.', inc: ['Sizing per room, not per brochure', 'Neat pipe runs & covers', 'Wi-Fi control options', 'Single or multi-head'], cta: 'Explore Split Systems', href: '/services/split-systems-reverse-cycle-heating/' },
+  { id: 'gas-upgrades', img: 'cosy4', alt: 'Living room with an old fireplace', t: 'Gas to reverse cycle upgrades', d: 'Replace an ageing gas ducted heater with reverse cycle and get cooling as well. We assess existing ductwork, organise the gas disconnect and check your eligibility for Victorian Energy Upgrades (VEU) discounts [sample].', inc: ['Ductwork assessment & reuse', 'Licensed gas disconnect', 'VEU paperwork handled [sample]', 'Running-cost comparison'], cta: 'Explore Gas Upgrades', href: '/contact/#consult' },
+  { id: 'servicing', img: 'tech1', alt: 'Technician servicing an outdoor unit', t: 'Servicing & maintenance plans', d: 'A clean, efficient system lasts longer and keeps its warranty. Our plans cover scheduled servicing with the same technicians who install.', inc: ['Filter & coil cleaning', 'Refrigerant & electrical checks', 'Priority booking', 'Warranty-compliant records'], cta: 'Explore Maintenance Plans', href: '/services/servicing-maintenance-plans/' },
+];
+const chooser = [
+  ['“The back bedrooms are always cold”', 'Usually points to ducted with proper zoning, or a split in the problem rooms.', 'Likely fit: Ducted or split', '/services/ducted-reverse-cycle/'],
+  ['“Our gas ducted heater is 15+ years old”', 'A good time to compare a gas to reverse cycle upgrade — with cooling included.', 'Likely fit: Gas upgrade', '#gas-upgrades'],
+  ['“We only need one or two rooms done”', 'A split or small multi-head system is likely the simplest, best-value fix.', 'Likely fit: Split system', '/services/split-systems-reverse-cycle-heating/'],
+  ["“The system works, but it's noisy and dusty”", 'Often a service, filter or duct issue rather than a replacement.', 'Likely fit: Servicing', '/services/servicing-maintenance-plans/'],
+];
+---
+<Base title="Heating & Cooling Services | Cooper & Vale" description="Ducted reverse cycle, split systems, gas to reverse cycle upgrades and maintenance plans for Melbourne's south-east." active="services">
+  <PageHero crumbs={[['Home', '/'], ['Services']]} title="Heating & Cooling Services" lead="Ducted and reverse cycle systems for Melbourne's south-east — designed for your house, installed by our own team, and looked after for years afterwards." image="cosy1" alt="Warm living room at dusk (sample imagery)" />
+  <TrustStrip />
+  <section class="bg-white">
+    <div class="wrap sec">
+      <div class="grid gap-6 lg:grid-cols-[1fr_540px] lg:items-end lg:gap-20">
+        <div><p class="eyebrow">Compare systems</p><h2 class="h2 mt-3 max-w-[660px]">Which system suits your home?</h2></div>
+        <p class="lead">A plain comparison of the three options we quote most. We'll confirm the right fit after seeing the house — this is where the conversation starts.</p>
+      </div>
+      <div class="mt-12 overflow-x-auto">
+        <table class="w-full min-w-[760px] border-collapse text-left">
+          <thead class="bg-ink text-white"><tr><th class="w-[22%] px-5 py-6 text-[13px] font-bold uppercase tracking-wider">System</th>{cols.map((c) => <th class="px-5 py-6 font-display text-[22px] font-normal">{c}</th>)}</tr></thead>
+          <tbody>
+            {rows.map(([h, ...v]) => <tr class="border-b border-line"><th class="py-4 pr-5 text-[14px] font-bold">{h}</th>{v.map((x) => <td class="px-5 py-4 text-[16px]">{x}</td>)}</tr>)}
+            <tr><td></td>{links.map(([l, h]) => <td class="px-5 pt-6"><a href={h} class="link-arrow">{l}</a></td>)}</tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="bg-cream">
+    <div class="wrap sec flex flex-col gap-20 lg:gap-[120px]">
+      {details.map((s, i) => (
+        <article id={s.id} class="grid scroll-mt-28 items-center gap-10 lg:grid-cols-2 lg:gap-[72px]">
+          <Pic name={s.img} alt={s.alt} class:list={['aspect-[4/3] w-full lg:max-w-[560px]', i % 2 === 1 && 'lg:order-2 lg:justify-self-end']} sizes="(min-width:1024px) 560px, 100vw" />
+          <div class="max-w-[648px]">
+            <p class="font-display text-[22px] text-copper">{String(i + 1).padStart(2, '0')}</p>
+            <h2 class="mt-3 text-[clamp(30px,3vw,40px)]">{s.t}</h2>
+            <p class="lead mt-5">{s.d}</p>
+            <p class="eyebrow mt-7">What's included</p>
+            <ul class="mt-3">{s.inc.map((x) => <li class="flex gap-3 border-b border-line py-2.5 text-[15px]"><span class="text-copper">—</span>{x}</li>)}</ul>
+            <a href={s.href} class="btn btn-ink btn-sm mt-7">{s.cta} <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+  <section class="bg-ink-2 text-white">
+    <div class="wrap sec">
+      <p class="eyebrow !text-sand">Not sure where to start?</p>
+      <h2 class="h2 mt-3 max-w-[720px]">Start with what's bothering you.</h2>
+      <ul class="mt-12 grid gap-x-14 md:grid-cols-2">
+        {chooser.map(([q, d, l, h]) => <li class="border-t border-white/15 py-7"><h3 class="text-[22px] sm:text-[24px]">{q}</h3><p class="mt-3 text-[15px] text-stone-2">{d}</p><a href={h} class="mt-3 inline-block text-[14px] font-bold text-peach hover:underline">{l}&nbsp; →</a></li>)}
+      </ul>
+    </div>
+  </section>
+  <FAQ title="Straight answers." items={[
+    ['How much does ducted reverse cycle cost?', 'It depends on house size, zones and roof access. Most of our quotes land between $X,XXX and $XX,XXX [sample]. We give you three options in writing after the consult.'],
+    ['Can you reuse my existing gas ductwork?', "Often, yes. If the ducts are in good condition and sized correctly we can connect them to a new reverse cycle unit. We check every run at the consult and tell you honestly if they need replacing."],
+    ['Do I qualify for VEU discounts?', 'Many homes replacing gas heating with an efficient reverse cycle system are eligible for Victorian Energy Upgrades discounts [sample]. We check eligibility and handle the paperwork.'],
+    ['How long does an install take?', 'Split systems take about half a day per unit. Most ducted installs and gas upgrades take one to two days on site.'],
+    ['Is the in-home consult really free?', "Yes. About an hour at your place, no obligation and no hard sell. You get three written options afterwards."],
+  ]} />
+  <ConsultForm />
+</Base>

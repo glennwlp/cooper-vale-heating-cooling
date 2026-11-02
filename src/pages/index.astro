@@ -1,7 +1,158 @@
 ---
 import Base from '../layouts/Base.astro';
+import Pic from '../components/Pic.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+import ConsultForm from '../components/ConsultForm.astro';
+import { tel, phone } from '../data/site';
+const weather = [
+  ['Tue 9 Jul · 6:40am', '2°C', 'text-teal', 'Frost on the car, back bedroom never warms up'],
+  ['Sat 3 Feb · 4:10pm', '41°C', 'text-copper', 'Upstairs unbearable by mid-afternoon'],
+  ['Thu 14 Mar', '14°→31°', 'text-steel', 'Heater at breakfast, cooling by lunch'],
+  ['Every quarter', '$$$', 'text-ink', 'Old gas ducted bills that keep climbing'],
+];
+const specialties = [
+  ['cosy1', 'Ducted reverse cycle', 'Whole-home heating and cooling, zoned room by room, with slim ceiling outlets and one wall controller.', 'Ducted reverse cycle', '/services/ducted-reverse-cycle/', 'Lounge room with ducted ceiling outlets'],
+  ['cosy5', 'Split & multi-head systems', 'For living areas, bedrooms and extensions — or a whole house without roof-space ducting.', 'Split systems', '/services/split-systems-reverse-cycle-heating/', 'Living room with a wall-mounted split system'],
+  ['cosy4', 'Gas to reverse cycle upgrades', 'Retire the old gas ducted unit. We check whether Victorian Energy Upgrades (VEU) discounts apply and lodge the paperwork [sample].', 'Gas upgrades', '/services/#gas-upgrades', 'Cosy living room with a fireplace'],
+  ['tech1', 'Servicing & maintenance plans', 'Scheduled cleans, filter changes and performance checks that keep your warranty intact.', 'Maintenance plans', '/services/servicing-maintenance-plans/', 'Technician servicing an outdoor unit'],
+];
+const why = [
+  ['Design before price', 'We map rooms, insulation, windows and roof access, then size the system. The quote comes after.'],
+  ['Our own installers', 'No subcontractors — the team that measures your home is the team in your roof.'],
+  ['7-year install warranty', 'Workmanship covered for seven years, on top of manufacturer cover [sample].'],
+  ['Rebate help', 'We check VEU eligibility and handle the paperwork where it applies.'],
+  ['Good / Better / Best', 'Three written options, priced side by side, so you can compare like for like.'],
+];
+const steps = [
+  ['Day 1', 'Free in-home consult', 'About an hour. We look in the roof, measure rooms and ask how you actually use the house.'],
+  ['Within 3 days', 'Design & written options', "Good / Better / Best, with running-cost estimates and any rebates you're eligible for."],
+  ['Install day', 'Install & commissioning', 'Our crew installs, tests airflow in every room, and leaves the place tidier than we found it.'],
+  ['After', 'Handover & support', 'We show you the controller, register your warranty and book the first service.'],
+];
+const suburbs: [string, string, string?][] = [
+  ['Glen Waverley', '8 min', '/areas/glen-waverley/'], ['Berwick', '25 min', '/areas/berwick/'],
+  ['Rowville', '10 min', '/areas/rowville/'], ['Narre Warren', '20 min'],
+  ['Wheelers Hill', '6 min'], ['Dandenong', '14 min'],
+  ['Mount Waverley', '12 min'], ['Springvale', '12 min'],
+  ['Clayton', '11 min'], ['Noble Park', '13 min'],
+];
 ---
-<Base title="Cooper & Vale Heating & Cooling">
-  <h1 class="text-4xl font-bold sm:text-5xl">Cooper &amp; Vale Heating &amp; Cooling</h1>
-  <p class="mt-4 text-lg text-gray-600">Coming soon.</p>
+<Base title="Cooper & Vale Heating & Cooling | Ducted & Reverse Cycle, Melbourne South-East" description="Mulgrave-based ducted and reverse cycle heating and cooling specialists for Melbourne's south-east. Free in-home consult, our own installers, 7-year install warranty." active="home">
+  <section class="bg-ink text-white">
+    <div class="mx-auto grid max-w-[1440px] lg:grid-cols-[1fr_560px] xl:grid-cols-[760px_680px]">
+      <div class="wrap !mx-0 py-14 sm:py-20 lg:pt-[96px] lg:pb-[72px] lg:!pr-12">
+        <p class="eyebrow !text-sand">Mulgrave · Ducted &amp; reverse cycle specialists</p>
+        <h1 class="mt-6 max-w-[608px] text-[clamp(42px,6vw,72px)] leading-[1.04]">Whole-Home Comfort for Melbourne's South-East</h1>
+        <p class="mt-7 max-w-[608px] text-[17px] leading-relaxed text-stone-3 sm:text-[19px]">We'll explain the options properly — what suits your home, what it costs to run, and what we'd choose if it were ours. Then our own team installs it.</p>
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+          <a href="#consult" class="btn btn-copper">Book a Free In-Home Consult <span aria-hidden="true">→</span></a>
+          <a href={tel} class="btn btn-ghost">Call {phone}</a>
+        </div>
+        <dl class="mt-10 flex max-w-[600px] flex-wrap gap-x-14 gap-y-5 border-t border-white/15 pt-7">
+          {[['4.9★', 'Google rating [sample]'], ['7 yrs', 'Install warranty'], ['0', 'Subcontractors']].map(([v, l]) => <div><dt class="sr-only">{l}</dt><dd class="font-display text-[32px] leading-none text-peach">{v}</dd><dd class="mt-2 text-[13px] text-stone">{l}</dd></div>)}
+        </dl>
+      </div>
+      <Pic name="cosy2" alt="Bright living room with a modular sofa and timber ceiling (sample imagery)" eager class="min-h-[340px] sm:min-h-[480px] lg:min-h-[824px]" sizes="(min-width:1280px) 680px, (min-width:1024px) 560px, 100vw" />
+    </div>
+  </section>
+  <TrustStrip />
+
+  <section class="bg-cream">
+    <div class="wrap sec">
+      <div class="grid gap-6 lg:grid-cols-[640px_1fr] lg:gap-20 lg:items-end">
+        <h2 class="h2">Melbourne weather is unpredictable. Your home shouldn't be.</h2>
+        <p class="text-[17px] leading-relaxed text-muted sm:text-[18px]">Four seasons in a day is a joke until it's your bedroom. Most comfort problems we see aren't bad luck — they're a system that was sized, placed or zoned without a proper look at the house.</p>
+      </div>
+      <ul class="mt-14 grid border border-steel sm:grid-cols-2 lg:grid-cols-4">
+        {weather.map(([d, t, c, s], i) => <li class:list={['px-7 py-7 border-steel', i > 0 && 'border-t sm:border-t-0', i % 2 === 1 && 'sm:border-l', i > 1 && 'sm:border-t lg:border-t-0', i > 0 && 'lg:border-l']}><p class="eyebrow">{d}</p><p class:list={['mt-3 font-display text-[48px] font-light leading-none sm:text-[56px]', c]}>{t}</p><p class="mt-5 max-w-[264px] text-[15px] leading-relaxed">{s}</p></li>)}
+      </ul>
+      <p class="mt-8 text-[12px] italic text-muted">Readings are illustrative of a typical Melbourne year.</p>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="wrap sec">
+      <div class="flex flex-col gap-4 border-b border-ink pb-8 md:flex-row md:items-end md:justify-between">
+        <h2 class="h2 max-w-[620px]">Four things we do, properly.</h2>
+        <p class="text-[17px] text-muted">We don't do a bit of everything. We do these.</p>
+      </div>
+      <ol>
+        {specialties.map(([im, t, d, l, h, alt], i) => (
+          <li class="grid items-center gap-5 border-b border-line py-7 sm:grid-cols-[50px_220px_1fr] lg:grid-cols-[65px_220px_1fr_auto] lg:gap-10">
+            <span class="font-display text-[22px] text-copper">{String(i + 1).padStart(2, '0')}</span>
+            <Pic name={im} alt={alt} class="aspect-[22/15] w-full sm:w-[220px]" sizes="220px" widths={[220, 440]} />
+            <div class="sm:col-start-2 sm:col-end-4 lg:col-auto"><h3 class="text-[26px] sm:text-[32px]"><a href={h} class="hover:text-copper">{t}</a></h3><p class="mt-2 text-[16px] leading-relaxed text-muted">{d}</p></div>
+            <a href={h} class="link-arrow sm:col-start-2 lg:col-auto">{l}&nbsp; →</a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="bg-ink-2 text-white">
+    <div class="wrap sec grid gap-14 lg:grid-cols-[1fr_540px] lg:gap-[88px]">
+      <div>
+        <p class="eyebrow !text-sand">Why Cooper &amp; Vale</p>
+        <h2 class="h2 mt-3 max-w-[652px]">Design first. Installed by the people who designed it.</h2>
+        <ol class="mt-10 border-t border-white/15">
+          {why.map(([t, d], i) => <li class="flex gap-5 border-b border-white/15 py-5"><span class="font-display text-[18px] text-sand">{String(i + 1).padStart(2, '0')}</span><div><h3 class="font-body text-[18px] font-semibold">{t}</h3><p class="mt-1.5 text-[15px] leading-relaxed text-stone-2">{d}</p></div></li>)}
+        </ol>
+      </div>
+      <div class="self-start rounded-[2px] bg-cream p-6 text-ink sm:p-10">
+        <div class="flex justify-between gap-4"><p class="eyebrow">Your options — sample quote</p><p class="text-[12px] text-muted">#CV-0412</p></div>
+        <h3 class="mt-3 border-b border-ink pb-5 text-[23px]">Single-storey brick veneer, Glen Waverley</h3>
+        {[['Good', 'text-steel', 'border-steel', '$X,XXX', 'Split systems: living + 2 bedrooms'], ['Better  · most chosen', 'text-teal', 'border-teal', '$XX,XXX', 'Ducted, 4 zones, standard controller'], ['Best', 'text-copper', 'border-copper', '$XX,XXX', 'Ducted, 6 zones, smart controller + sensors']].map(([n, c, b, p, d]) => (
+          <div class="flex items-center justify-between gap-4 border-b border-line py-5"><div class:list={['border-l-[3px] pl-4', b]}><p class:list={['text-[15px] font-bold', c]}>{n}</p><p class="text-[14px] text-muted">{d}</p></div><p class="font-display text-[22px] font-medium">{p}</p></div>
+        ))}
+        <p class="mt-5 text-[13px] leading-relaxed text-muted">Every option includes design, install, commissioning and the 7-year workmanship warranty. Prices [sample].</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cream">
+    <div class="wrap sec">
+      <div class="grid gap-6 lg:grid-cols-[1fr_580px] lg:items-end lg:gap-20">
+        <h2 class="h2 max-w-[620px]">From first call to a quiet, even house.</h2>
+        <p class="text-[17px] leading-relaxed text-muted">Most installs are done within three weeks of your consult, and most take a single day on site.</p>
+      </div>
+      <div class="mt-12 grid gap-12 lg:grid-cols-[380px_1fr] lg:gap-12">
+        <Pic name="tech2" alt="Technician testing a unit with a meter (sample imagery)" class="aspect-[380/489] w-full max-lg:max-h-[420px] max-lg:aspect-auto max-lg:h-[360px]" sizes="(min-width:1024px) 380px, 100vw" />
+        <ol class="border-t border-ink">
+          {steps.map(([w, t, d], i) => <li class="grid gap-2 border-b border-line py-6 sm:grid-cols-[212px_1fr]"><p class="flex items-baseline gap-3"><span class="font-display text-[28px] leading-none text-copper">{i + 1}</span><span class="eyebrow">{w}</span></p><div><h3 class="text-[26px]">{t}</h3><p class="mt-2 text-[16px] leading-relaxed text-muted">{d}</p></div></li>)}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white" id="areas">
+    <div class="wrap sec grid gap-12 lg:grid-cols-[648px_1fr] lg:gap-[72px]">
+      <div>
+        <h2 class="h2">Local to the south-east. Usually 20 minutes away.</h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-muted">We're based in Mulgrave, so we know the housing stock — 70s brick veneers, post-war weatherboards and new estates — and the roof spaces that come with them.</p>
+        <ul class="mt-9 grid gap-x-10 sm:grid-cols-2">
+          {suburbs.map(([s, m, h]) => <li class="flex items-center justify-between gap-3 border-t border-line py-3">{h ? <a href={h} class="text-[16px] font-bold text-teal-dark hover:underline">{s}&nbsp; →</a> : <span class="text-[16px] font-medium">{s}</span>}<span class="text-[13px] text-muted">{m} from Mulgrave</span></li>)}
+        </ul>
+        <p class="mt-5 text-[13px] italic text-muted">Drive times indicative. Don't see your suburb? Call <a href={tel} class="underline">{phone}</a>.</p>
+      </div>
+      <Pic name="brick" alt="Modern brick home lit up at dusk (sample imagery)" class="aspect-square w-full" sizes="(min-width:1024px) 560px, 100vw" />
+    </div>
+  </section>
+
+  <section class="bg-mint">
+    <div class="wrap sec grid gap-12 lg:grid-cols-[780px_1fr] lg:gap-20">
+      <figure>
+        <p class="eyebrow !text-teal-dark">Sample review · ★★★★★</p>
+        <blockquote class="mt-5 font-display text-[28px] leading-snug sm:text-[38px]">“They were the only ones who got in the roof before quoting. Three options, plain English, and the bedrooms are finally the same temperature as the lounge.”</blockquote>
+        <figcaption class="mt-6 text-[15px] text-muted">— Sample customer, Glen Waverley · Ducted, 5 zones</figcaption>
+      </figure>
+      <div class="border-t border-teal-dark">
+        {[['“Moved off gas ducted and our winter bill dropped noticeably. They sorted the rebate paperwork too.”', 'Sample customer, Berwick · Gas to reverse cycle'], ['“Same tech every year, on time, boots off at the door.”', 'Sample customer, Rowville · Service plan']].map(([q, c]) => (
+          <figure class="border-b border-teal-dark/40 py-6"><p class="text-[14px] text-copper" aria-label="5 stars">★★★★★</p><blockquote class="mt-2 text-[17px] leading-relaxed">{q}</blockquote><figcaption class="mt-2 text-[13px] text-muted">{c}</figcaption></figure>
+        ))}
+        <p class="mt-5 text-[12px] italic text-muted">All reviews on this demo site are sample content.</p>
+      </div>
+    </div>
+  </section>
+
+  <ConsultForm />
 </Base>

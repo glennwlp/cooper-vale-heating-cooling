@@ -1,7 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 ---
-<Base title="Page not found | Cooper & Vale Heating & Cooling">
-  <h1 class="text-4xl font-bold">404</h1>
-  <p class="mt-4 text-lg text-gray-600">Page not found. <a href="/" class="underline">Back to home</a></p>
+<Base title="Page not found | Cooper & Vale" description="That page doesn't exist.">
+  <section class="bg-cream"><div class="wrap sec text-center">
+    <p class="eyebrow">404</p><h1 class="h1 mt-4">We couldn't find that page.</h1>
+    <p class="lead mx-auto mt-5 max-w-[560px]">It may have moved. Try our services, or book a free in-home consult.</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3"><a href="/" class="btn btn-copper">Back to home</a><a href="/services/" class="btn btn-outline">View services</a></div>
+  </div></section>
 </Base>

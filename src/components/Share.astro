@@ -1,0 +1,4 @@
+---
+import Icon from './Icon.astro';
+---
+<div class="flex items-center gap-3"><span class="text-[13px] font-semibold text-muted">Share</span>{(['fb', 'in', 'xlogo', 'link'] as const).map((i) => <span class="grid size-9 place-items-center rounded-full border border-line-2 text-ink"><Icon name={i} size={15} /></span>)}</div>

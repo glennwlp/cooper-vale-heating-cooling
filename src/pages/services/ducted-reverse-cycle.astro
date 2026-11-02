@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
+import Benefits from '../../components/Benefits.astro';
+import Included from '../../components/Included.astro';
+import Tiers from '../../components/Tiers.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABand from '../../components/CTABand.astro';
+import ConsultForm from '../../components/ConsultForm.astro';
+---
+<Base title="Ducted Reverse Cycle Heating & Cooling | Cooper & Vale" description="Zoned ducted reverse cycle heating and cooling for Melbourne's south-east, designed room by room and installed by our own team." active="services">
+  <PageHero crumbs={[['Home', '/'], ['Services', '/services/'], ['Ducted Reverse Cycle']]} title="Ducted Reverse Cycle Heating & Cooling" lead="One quiet system for the whole house — warm in July, cool in February, with slim ceiling outlets and zones for the rooms you actually use." image="cosy1" alt="Living room with ducted ceiling outlets (sample imagery)" stats={[['1–2 days', 'Typical install'], ['Up to 8', 'Zones'], ['7 yrs', 'Install warranty']]} />
+  <TrustStrip />
+  <Benefits title="Whole-home comfort, without the clutter." items={[
+    ['vent', 'Out of sight', 'Slim ceiling outlets and one wall controller. No units on your walls.'],
+    ['grid', 'Zoned room by room', "Heat the living areas by day and bedrooms by night — and nothing you're not using."],
+    ['quiet', 'Quiet indoors', 'The fan coil lives in the roof space; the outdoor unit is placed away from bedrooms.'],
+    ['leaf', 'Off gas for good', 'Reverse cycle heats more efficiently than old gas ducted and adds cooling.'],
+  ]} />
+  <Included title="Designed for your house, not a brochure." lead="Every ducted quote includes a proper design: we check the roof space, measure each room and plan outlet positions before we price anything." image="thermo2" alt="Wall-mounted zone controller (sample imagery)" items={['Heat-load calculation for every room', 'Zoning design — up to 8 zones', 'Premium insulated flexible ducting', 'Slim linear or square ceiling outlets', 'Wall controller, with app control on Better & Best', 'Removal of old system & gas disconnect (where needed)', 'Airflow testing in every room at commissioning', '7-year workmanship warranty [sample]']} />
+  <Tiers title="Three options, priced side by side." lead="We always quote three ways so you can see exactly what extra money buys. Most families choose Better." rows={['System', 'Zones', 'Controller', 'Outlets', 'Noise treatment', 'Install warranty']} tiers={[
+    { price: '$X,XXX', sub: 'Reliable whole-home comfort', vals: ['Leading brand, standard series', '2 zones', 'Standard wall controller', 'Standard round outlets', 'Standard', '7 years'] },
+    { price: '$XX,XXX', sub: 'Our most-chosen balance', vals: ['Leading brand, inverter series', '4 zones', 'Touchscreen + app control', 'Slim square outlets', 'Indoor unit isolated & lagged', '7 years'] },
+    { price: '$XX,XXX', sub: 'Room-by-room precision', vals: ['Premium inverter series', 'Up to 8 zones', 'Smart controller + room sensors', 'Linear slot outlets', 'Full acoustic package', '7 years + priority service'] },
+  ]} />
+  <FAQ title="Ducted questions, answered." items={[
+    ['How much does ducted reverse cycle cost in Melbourne?', 'For a typical 3–4 bedroom south-east home, our quotes usually fall between $X,XXX and $XX,XXX [sample]. House size, zones, roof access and existing ductwork are the big variables.'],
+    ['Can you use my existing gas heating ducts?', "Sometimes. Gas ducts are often sized for heating only, so we check their size and condition at the consult. If they're suitable we reuse them; if not, we explain why."],
+    ['Will it be noisy?', 'The indoor fan coil sits in the roof space and is isolated on Better and Best options. We place the outdoor unit away from bedrooms and neighbours wherever the block allows.'],
+    ['What if my roof space is tight?', "We'll look before we quote. Low-profile fan coils, under-floor options or a multi-head split system can work where roof access is limited."],
+    ['How long will it last?', 'A well-installed, regularly serviced ducted system typically lasts 15–20 years [sample]. Our maintenance plans help it get there.'],
+  ]} />
+  <CTABand title="See what ducted would look like in your home." sub="Free in-home consult. Three written options. No pressure." href="#consult" />
+  <ConsultForm />
+</Base>

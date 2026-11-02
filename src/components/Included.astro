@@ -1,0 +1,18 @@
+---
+import Pic from './Pic.astro';
+interface Props { title: string; lead: string; image: string; alt: string; items: string[] }
+const { title, lead, image, alt, items } = Astro.props;
+---
+<section class="bg-cream">
+  <div class="wrap sec grid gap-12 lg:grid-cols-[520px_1fr] lg:gap-20">
+    <Pic name={image} alt={alt} class="aspect-[520/560] w-full" sizes="(min-width:1024px) 520px, 100vw" />
+    <div>
+      <p class="eyebrow">What's included</p>
+      <h2 class="h2 mt-3">{title}</h2>
+      <p class="lead mt-6">{lead}</p>
+      <ul class="mt-8">
+        {items.map((t) => <li class="flex items-center gap-4 border-b border-line py-3 text-[16px]"><span class="grid size-[22px] shrink-0 place-items-center rounded-[2px] bg-ink text-[12px] font-bold text-white" aria-hidden="true">✓</span>{t}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>

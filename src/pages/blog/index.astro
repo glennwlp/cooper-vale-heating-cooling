@@ -1,0 +1,42 @@
+---
+import Base from '../../layouts/Base.astro';
+import Pic from '../../components/Pic.astro';
+import PostCard from '../../components/PostCard.astro';
+import CTABand from '../../components/CTABand.astro';
+import { posts, featuredHref } from '../../data/posts';
+const cats = ['All', 'Comparisons', 'Ducted', 'Split systems', 'Gas upgrades', 'Rebates', 'Maintenance'];
+---
+<Base title="Heating & Cooling Advice | Cooper & Vale Blog" description="Straight answers on ducted, split systems, gas upgrades, rebates and maintenance for Melbourne homes." active="blog">
+  <section class="bg-ink text-white">
+    <div class="wrap pt-14 pb-12 lg:pt-[72px] lg:pb-16">
+      <nav aria-label="Breadcrumb" class="text-[13px] text-stone"><a href="/" class="hover:text-white">Home</a><span class="mx-2">/</span><span aria-current="page">Blog</span></nav>
+      <div class="mt-5 grid gap-6 lg:grid-cols-[1fr_466px] lg:items-end lg:gap-20">
+        <h1 class="h1">Heating &amp; Cooling Advice</h1>
+        <p class="text-[17px] leading-relaxed text-stone-3 sm:text-[18px]">Straight answers from the people who design and install it. No jargon, no hard sell — just how it works in Melbourne homes.</p>
+      </div>
+      <div class="mt-10 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <ul class="flex flex-wrap gap-2">{cats.map((c, i) => <li><span class={`inline-block rounded-[2px] border px-4 py-2 text-[14px] font-semibold ${i === 0 ? 'border-copper bg-copper' : 'border-white/25'}`}>{c}</span></li>)}</ul>
+        <label class="flex w-full items-center gap-2 rounded-[2px] border border-white/25 px-4 py-2.5 lg:w-[286px]"><span class="text-stone" aria-hidden="true">⌕</span><span class="sr-only">Search articles</span><input type="search" placeholder="Search articles" class="w-full bg-transparent text-[14px] placeholder:text-stone focus:outline-none" /></label>
+      </div>
+    </div>
+  </section>
+  <section class="bg-white">
+    <div class="wrap sec">
+      <a href={featuredHref} class="group grid gap-8 lg:grid-cols-[720px_1fr] lg:items-center lg:gap-16">
+        <div class="relative"><Pic name="cosy1" alt="Cosy living room (sample imagery)" class="aspect-[36/23] w-full" sizes="(min-width:1024px) 720px, 100vw" eager /><span class="absolute top-4 left-4 rounded-[2px] bg-copper px-2.5 py-1 text-[11px] font-bold tracking-[0.1em] text-white">FEATURED</span></div>
+        <div>
+          <p class="text-[12px] font-semibold tracking-[0.08em] text-teal-dark uppercase">Comparisons</p>
+          <h2 class="mt-3 text-[32px] leading-tight sm:text-[44px] group-hover:text-copper-dark">Ducted vs split systems: which suits a Melbourne home?</h2>
+          <p class="mt-4 text-[17px] leading-relaxed text-muted sm:text-[18px]">The honest trade-offs in cost, comfort and looks — and the three questions we ask before recommending either.</p>
+          <p class="mt-5 text-[14px] text-muted">Priya Vale  ·  12 Oct 2026  ·  8 min read</p>
+          <p class="link-arrow mt-6">Read the article&nbsp; →</p>
+        </div>
+      </a>
+      <div class="mt-20 grid gap-x-10 gap-y-14 md:grid-cols-2 lg:grid-cols-3">{posts.map((p) => <PostCard p={p} />)}</div>
+      <nav aria-label="Pagination" class="mt-16 flex justify-center gap-2 text-[15px] font-semibold">
+        {['←', '1', '2', '3', '→'].map((n) => <span class={`grid size-11 place-items-center rounded-[2px] border ${n === '1' ? 'border-ink bg-ink text-white' : 'border-line-2'}`} aria-current={n === '1' ? 'page' : undefined}>{n}</span>)}
+      </nav>
+    </div>
+  </section>
+  <CTABand title="Rather talk it through with a designer?" sub="Free in-home consult. Three written options. No pressure." />
+</Base>

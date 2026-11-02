@@ -1,0 +1,55 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
+import Benefits from '../../components/Benefits.astro';
+import Included from '../../components/Included.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABand from '../../components/CTABand.astro';
+import ConsultForm from '../../components/ConsultForm.astro';
+const plans = [
+  { n: 'Essential', s: 'For split systems', p: '$XXX', f: ['1 service visit per year', 'Filter & coil clean', 'Electrical & drain check', 'Service report for warranty'], c: 'Choose Essential', dark: false, tick: 'text-steel', bar: 'bg-ink' },
+  { n: 'Comfort', s: 'For ducted systems', p: '$XXX', f: ['2 visits: pre-winter & pre-summer', 'Full ducted system service', 'Outlet & return air clean', 'Priority breakdown booking', '10% off parts [sample]'], c: 'Choose Comfort', dark: true, tick: 'text-teal', bar: 'bg-teal' },
+  { n: 'Complete', s: 'Ducted + splits, whole home', p: '$X,XXX', f: ['2 visits per year', 'Ducted + up to 3 splits', 'Same-week breakdown response', 'Waived call-out fees [sample]', '15% off parts [sample]'], c: 'Choose Complete', dark: false, tick: 'text-copper', bar: 'bg-copper' },
+];
+---
+<Base title="Servicing & Maintenance Plans | Cooper & Vale" description="Scheduled servicing for ducted and split systems from the same team who install. Keep your system quiet, efficient and under warranty." active="services">
+  <PageHero crumbs={[['Home', '/'], ['Services', '/services/'], ['Servicing & Maintenance Plans']]} title="Servicing & Maintenance Plans" lead="Scheduled care from the same people who install. Keep your system quiet, efficient and under warranty — without having to remember to book." image="tech1" alt="Technician servicing an outdoor unit (sample imagery)" stats={[['Same tech', 'Every visit'], ['Priority', 'Breakdown booking'], ['All brands', 'Ducted & split']]} />
+  <TrustStrip />
+  <Benefits title="Small, regular care beats big repairs." items={[
+    ['shield', 'Protects your warranty', 'Most manufacturers require documented servicing. We keep the records.'],
+    ['gauge', 'Keeps running costs down', 'Clean coils and filters can make a noticeable difference to efficiency.'],
+    ['calendar', 'We book it for you', 'A reminder before winter and summer — you just confirm a time.'],
+    ['wrench', 'Catches issues early', 'Small faults found at a service rarely become a February breakdown.'],
+  ]} />
+  <section class="bg-cream">
+    <div class="wrap sec">
+      <div class="grid gap-6 lg:grid-cols-[1fr_560px] lg:items-end lg:gap-20">
+        <div><p class="eyebrow">Maintenance plans</p><h2 class="h2 mt-3">Choose your level of care.</h2></div>
+        <p class="lead">Plans are billed annually and cover one system. Additional splits are added at a reduced rate [sample].</p>
+      </div>
+      <ul class="mt-12 grid items-start gap-6 md:grid-cols-3">
+        {plans.map((p) => (
+          <li class:list={['relative flex flex-col rounded-[2px] p-8', p.dark ? 'bg-ink text-white md:min-h-[548px]' : 'bg-white shadow-[0_0_0_1px_#dcd3c4]']}>
+            <span class:list={['absolute inset-x-0 top-0 h-1', p.bar]}></span>
+            {p.dark && <span class="mb-3 self-start rounded-[2px] bg-teal px-2 py-1 text-[11px] font-bold tracking-wider text-white">MOST POPULAR</span>}
+            <h3 class="text-[32px]">{p.n}</h3>
+            <p class:list={['text-[15px]', p.dark ? 'text-stone-2' : 'text-muted']}>{p.s}</p>
+            <p class="mt-5"><span class="font-display text-[48px] leading-none">{p.p}</span> <span class:list={['text-[14px]', p.dark ? 'text-stone-2' : 'text-muted']}>/ year [sample]</span></p>
+            <ul class="mt-6 flex-1">{p.f.map((x) => <li class:list={['flex gap-3 border-b py-2.5 text-[15px]', p.dark ? 'border-white/15' : 'border-line']}><span class:list={['font-bold', p.tick]}>✓</span>{x}</li>)}</ul>
+            <a href="#consult" class:list={['btn btn-sm mt-7 w-full', p.dark ? 'btn-copper' : 'btn-outline']}>{p.c}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  <Included title="What happens at every service." lead="About 60–90 minutes on site. You get a written report and photos of anything worth watching." image="tech2" alt="Technician testing a unit (sample imagery)" items={['Clean or replace filters', 'Clean indoor coil and drain tray', 'Check refrigerant pressures and temperatures', 'Inspect outdoor unit, fan and fins', 'Test electrical connections and controls', 'Check ductwork, outlets and return air (ducted)', 'Measure airflow and supply temperatures', 'Written service report for warranty records']} />
+  <FAQ title="Servicing questions." items={[
+    ['How often should my system be serviced?', 'Ducted systems: ideally twice a year, before winter and summer. Splits: once a year for most households.'],
+    ["Do you service systems you didn't install?", 'Yes. We service all major brands of ducted and split systems, whoever installed them.'],
+    ['Can I cancel my plan?', 'Yes. Plans renew annually and you can cancel before the renewal date [sample].'],
+    ['What if something breaks between services?', 'Plan members get priority breakdown booking, and Complete members get same-week response and waived call-out fees [sample].'],
+  ]} />
+  <CTABand title="Book a service or join a plan." sub="Call 1300 000 111 or request a booking online — we'll confirm within one business day." href="#consult" />
+  <ConsultForm />
+</Base>

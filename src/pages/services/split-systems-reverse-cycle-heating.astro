@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
+import Benefits from '../../components/Benefits.astro';
+import Included from '../../components/Included.astro';
+import Tiers from '../../components/Tiers.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABand from '../../components/CTABand.astro';
+import ConsultForm from '../../components/ConsultForm.astro';
+---
+<Base title="Split Systems & Reverse Cycle Heating | Cooper & Vale" description="Inverter split and multi-head reverse cycle systems for Melbourne homes, sized room by room and installed neatly by our own team." active="services">
+  <PageHero crumbs={[['Home', '/'], ['Services', '/services/'], ['Split Systems']]} title="Split Systems & Reverse Cycle Heating" lead="Efficient, wall-mounted heating and cooling for the rooms that need it most — or the whole house, without ducting through the roof." image="cosy5" alt="Open-plan living room with a split system (sample imagery)" stats={[['½ day', 'Per unit install'], ['1–5', 'Rooms per outdoor unit'], ['7 yrs', 'Install warranty']]} />
+  <TrustStrip />
+  <Benefits title="The fastest way to fix the rooms that matter." items={[
+    ['gauge', 'Lowest running cost', 'Inverter splits are among the most efficient ways to heat a room in Melbourne.'],
+    ['sun', 'Heats as well as cools', 'Reverse cycle means one unit replaces the portable heater and the fan.'],
+    ['sliders', 'Room-by-room control', 'Each unit runs independently. Heat the lounge, leave the spare room off.'],
+    ['wifi', 'Control from your phone', 'Wi-Fi models let you warm the house before you get home.'],
+  ]} />
+  <Included title="Neat, quiet and placed properly." lead="We size each unit to the room, then plan where the pipes run and where the outdoor unit sits — so it looks tidy inside and out." image="cosy3" alt="Bright room with a fireplace (sample imagery)" items={['Room-by-room sizing (not "one size fits most")', 'Indoor unit placement for even airflow', 'Concealed or neatly covered pipe runs', 'Outdoor unit on brackets or a slab', 'Dedicated electrical circuit where required', 'Wi-Fi control on Better & Best', 'Old unit removal and recycling', '7-year workmanship warranty [sample]']} />
+  <Tiers title="Single room or the whole house." lead="Three ways to get comfortable, priced clearly. Multi-head systems run several indoor units from one outdoor unit." rows={['System', 'Rooms', 'Control', 'Pipework', 'Install warranty', 'Extras']} tiers={[
+    { price: '$X,XXX', sub: 'One main living area', vals: ['1 × 7kW inverter split', '1 room', 'Remote control', 'Standard pipe cover', '7 years', '—'] },
+    { price: '$X,XXX', sub: 'Living + main bedroom', vals: ['2 × inverter splits', '2 rooms', 'Wi-Fi app control', 'Concealed where possible', '7 years', '—'] },
+    { price: '$XX,XXX', sub: 'Living + 3 bedrooms', vals: ['Multi-head, 4 indoor units', '4 rooms', 'Wi-Fi + scheduling', 'Fully concealed runs', '7 years', 'First service included'] },
+  ]} />
+  <FAQ title="Split system questions." items={[
+    ['What size split system do I need?', 'It depends on room size, ceiling height, insulation, windows and orientation. We measure rather than guess — oversizing is as bad as undersizing.'],
+    ['Split vs ducted — which is better?', "Neither is better everywhere. Splits suit one to three rooms and homes without roof access; ducted suits whole-home comfort with nothing on the walls. We'll compare both in writing."],
+    ['Can a split system replace my gas heater?', 'For smaller homes or open-plan living areas, often yes. For whole-home heating, a multi-head system or ducted reverse cycle is usually the better replacement.'],
+    ['How noisy are they?', 'Modern inverter indoor units run at a whisper on low settings. We place outdoor units away from bedrooms and neighbours where possible.'],
+    ['What is a multi-head system?', 'One outdoor unit connected to two to five indoor units. It keeps the outside of the house tidy while giving each room its own control.'],
+  ]} />
+  <CTABand title="Not sure if a split is enough?" sub="We'll compare split and ducted options in your home — free, and in writing." href="#consult" />
+  <ConsultForm />
+</Base>

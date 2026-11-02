@@ -1,16 +1,12 @@
-# Cooper & Vale Heating & Cooling
+# Cooper & Vale Heating & Cooling — demo site
 
-Blank starter site for a fictional Australian HVAC business (demo by AirLeads Builder).
-
-- Astro (static output) + Tailwind CSS 4 + TypeScript
-- Deployed as a Cloudflare Worker (`cooper-vale-heating-cooling`) serving `./dist` via a static-assets binding only. No secrets.
-- `noindex` meta and `robots.txt` disallow all.
+Fictional demo site built by AirLeads Builder from the Penpot design. Astro (static) + Tailwind 4 + TypeScript, Fontsource fonts (Fraunces, DM Sans). The quote forms are front-end only; nothing is sent.
 
 ```sh
 npm install
-npm run dev      # local dev
-npm run build    # outputs ./dist
-npm run deploy   # build + wrangler deploy
+npm run dev        # local dev
+npx astro build    # outputs dist/
+npx wrangler deploy  # Cloudflare Worker static assets -> cooper-vale-heating-cooling.glenn-b84.workers.dev
 ```
 
-Live: https://cooper-vale-heating-cooling.glenn-b84.workers.dev
+Routes: `/`, `/services/`, `/services/ducted-reverse-cycle/`, `/services/split-systems-reverse-cycle-heating/`, `/services/servicing-maintenance-plans/`, `/areas/glen-waverley/`, `/areas/berwick/`, `/areas/rowville/`, `/about/`, `/contact/`, `/blog/`, `/blog/ducted-vs-split-systems-melbourne/`.

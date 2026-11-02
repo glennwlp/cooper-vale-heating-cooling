@@ -1,0 +1,76 @@
+---
+import Base from '../layouts/Base.astro';
+import Pic from '../components/Pic.astro';
+import PageHero from '../components/PageHero.astro';
+import CTABand from '../components/CTABand.astro';
+const team = [['Sam Cooper', 'Co-founder · Lead installer', 'Refrigeration mechanic, 25+ years [sample]'], ['Priya Vale', 'Co-founder · System design', 'Mechanical services designer [sample]'], ['Dan Huynh', 'Senior technician', 'Ducted specialist, service lead [sample]'], ['Mel Russo', 'Customer care', 'Books consults & services [sample]']];
+const timeline = [['2009', 'Started in Mulgrave with one van [sample]'], ['2014', 'Became ARC authorised & added gasfitting [sample]'], ['2019', 'Launched maintenance plans [sample]'], ['2025', '2,400th install, Glen Waverley [sample]']];
+const work = [
+  ['cosy4', 'cosy1', 'Gas ducted → 5-zone ducted, Glen Waverley', 'Ducted reverse cycle', 'ducted'],
+  ['cosy3', 'cosy5', 'Portable heaters → 3-head split, Rowville', 'Split & multi-head', 'split'],
+  ['tech2', 'thermo2', 'Dial thermostat → smart zoning, Berwick', 'Ducted reverse cycle', 'ducted'],
+  ['cosy4', 'cosy2', 'Gas wall furnace → reverse cycle, Mulgrave', 'Gas upgrades', 'gas'],
+  ['tech2', 'tech1', 'Neglected outdoor unit → full service, Wheelers Hill', 'Servicing', 'servicing'],
+  ['cosy3', 'cosy1', 'Single heater → whole-home ducted, Narre Warren', 'Ducted reverse cycle', 'ducted'],
+];
+const filters = [['all', 'All work  (6)'], ['ducted', 'Ducted reverse cycle'], ['split', 'Split & multi-head'], ['gas', 'Gas upgrades'], ['servicing', 'Servicing']];
+---
+<Base title="About & Our Work | Cooper & Vale" description="Cooper & Vale is a Mulgrave heating and cooling team: designers, licensed installers and technicians, all employed directly." active="about">
+  <PageHero crumbs={[['Home', '/'], ['About & Our Work']]} title="We'll explain the options properly." lead="Cooper & Vale started with a simple frustration: homeowners being sold the biggest box, not the right system. We design first, install with our own team, and stay for the servicing." image="tech2" alt="Technician testing a system (sample imagery)" ctaHref="/contact/#consult" stats={[['2009', 'Founded [sample]'], ['2,400+', 'Installs [sample]'], ['0', 'Subcontractors']]} />
+  <section class="bg-white">
+    <div class="wrap sec grid gap-12 lg:grid-cols-[520px_1fr] lg:gap-24">
+      <div>
+        <p class="eyebrow">Our story</p>
+        <blockquote class="mt-5 font-display text-[30px] leading-snug sm:text-[36px]">“We'd rather lose a job than install a system we wouldn't put in our own house.”</blockquote>
+        <p class="mt-5 text-[14px] text-muted">— Sam Cooper, co-founder [sample]</p>
+      </div>
+      <div class="lead space-y-5">
+        <p>Sam Cooper spent twelve years as a refrigeration mechanic; Priya Vale came from mechanical services design. They met on a commercial job in Dandenong and kept talking about the same thing — how many homes they saw with oversized, badly zoned systems [sample story].</p>
+        <p>In 2009 they started Cooper &amp; Vale in a Mulgrave workshop with one van. Today the team is fifteen people [sample], all employed directly: designers, licensed installers, gasfitters and service technicians.</p>
+        <p>We still work the same way. Someone looks in your roof before anyone talks price. You get three written options. And the person who designed your system is a phone call away for years afterwards.</p>
+        <ol class="!mt-8 border-t border-line text-ink">{timeline.map(([y, t]) => <li class="flex gap-8 border-b border-line py-3.5"><span class="w-12 shrink-0 font-display text-[20px] text-copper">{y}</span><span class="text-[15px]">{t}</span></li>)}</ol>
+      </div>
+    </div>
+  </section>
+  <section class="bg-cream">
+    <div class="wrap sec">
+      <p class="eyebrow">The people you'll meet</p>
+      <h2 class="h2 mt-3 max-w-[760px]">Designers, installers, technicians. All ours.</h2>
+      <ul class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {team.map(([n, r, d]) => <li class="border-t border-ink pt-5"><h3 class="text-[24px]">{n}</h3><p class="mt-2 text-[14px] font-bold text-copper-dark">{r}</p><p class="mt-1 text-[14px] text-muted">{d}</p></li>)}
+      </ul>
+      <p class="mt-8 text-[12px] italic text-muted">Team names and details are sample content for this demo.</p>
+    </div>
+  </section>
+  <section class="bg-white scroll-mt-24" id="work">
+    <div class="wrap sec">
+      <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+        <div><p class="eyebrow">Our work</p><h2 class="h2 mt-3 max-w-[700px]">Before &amp; after, across the south-east.</h2></div>
+        <p class="text-[13px] text-muted">All job photos are sample imagery.</p>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-2" role="group" aria-label="Filter projects">
+        {filters.map(([k, l], i) => <button type="button" data-filter={k} aria-pressed={i === 0 ? 'true' : 'false'} class="rounded-[2px] border border-line-2 px-4 py-2 text-[15px] font-semibold aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white">{l}</button>)}
+      </div>
+      <ul class="mt-8 grid gap-x-8 gap-y-10 lg:grid-cols-2" id="work-grid">
+        {work.map(([b, a, t, c, k]) => (
+          <li data-cat={k}>
+            <div class="grid grid-cols-2 gap-1">
+              <Pic name={b} alt={`Before: ${t}`} tag="Before · Sample imagery" class="aspect-[31/24]" sizes="(min-width:1024px) 310px, 50vw" widths={[310, 620]} />
+              <Pic name={a} alt={`After: ${t}`} tag="After · Sample imagery" class="aspect-[31/24]" sizes="(min-width:1024px) 310px, 50vw" widths={[310, 620]} />
+            </div>
+            <div class="mt-4 flex flex-wrap items-start justify-between gap-3"><h3 class="text-[20px]">{t}</h3><span class="rounded-[2px] bg-mint px-2.5 py-1 text-[12px] font-bold text-teal-dark">{c}</span></div>
+          </li>
+        ))}
+      </ul>
+      <div class="mt-12 text-center"><a href="/contact/#consult" class="btn btn-outline btn-sm">Talk to us about your project</a></div>
+    </div>
+  </section>
+  <CTABand title="Want your home in our next before & after?" sub="Book a free in-home consult. We'll explain the options properly." />
+  <script>
+    const btns = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+    btns.forEach((b) => b.addEventListener('click', () => {
+      btns.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      document.querySelectorAll<HTMLElement>('#work-grid > li').forEach((li) => { li.hidden = b.dataset.filter !== 'all' && li.dataset.cat !== b.dataset.filter; });
+    }));
+  </script>
+</Base>

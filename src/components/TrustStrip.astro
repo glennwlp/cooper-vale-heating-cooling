@@ -1,0 +1,8 @@
+---
+import { trust } from '../data/site';
+---
+<section class="border-b border-line bg-white" aria-label="Licences and guarantees">
+  <ul class="wrap grid grid-cols-2 gap-x-6 gap-y-4 py-5 sm:grid-cols-3 lg:grid-cols-6 lg:gap-x-3">
+    {trust.map(([a, b]) => <li><p class="text-[14px] font-bold">{a}</p><p class="text-[13px] text-muted">{b}</p></li>)}
+  </ul>
+</section>

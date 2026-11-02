@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import { tel, phone, email } from '../data/site';
+const hours = [['Monday – Friday', '7:30am – 5:00pm'], ['Saturday', 'Consults by appointment'], ['Sunday & public holidays', 'Closed'], ['After-hours breakdowns', 'Plan members only [sample]']];
+const lic = ['Mechanical Services Plumber — Lic. 000000 [sample]', 'ARC Refrigerant Trading Authorisation — AU00000 [sample]', 'Licensed Gasfitter — Lic. 000000 [sample]', '$20M public liability [sample]'];
+---
+<Base title="Contact Cooper & Vale | Book a Free In-Home Consult" description="Call 1300 000 111, email or send a message to book a free in-home heating and cooling consult in Melbourne's south-east." active="contact">
+  <section class="bg-ink text-white">
+    <div class="wrap pt-14 pb-16 lg:pt-[72px] lg:pb-24">
+      <nav aria-label="Breadcrumb" class="text-[13px] text-stone"><a href="/" class="hover:text-white">Home</a><span class="mx-2">/</span><span aria-current="page">Contact</span></nav>
+      <h1 class="h1 mt-5">Talk to Cooper &amp; Vale</h1>
+      <p class="mt-5 max-w-[760px] text-[17px] leading-relaxed text-stone-3 sm:text-[19px]">Book a free in-home consult, ask a question, or arrange a service. A real person answers — usually within the hour on weekdays.</p>
+      <ul class="mt-10 grid border border-white/20 md:grid-cols-3">
+        <li class="p-7"><p class="eyebrow !text-sand">Call</p><a href={tel} class="mt-2 block font-display text-[24px] hover:text-peach">{phone}</a><p class="mt-2 text-[14px] text-stone">Mon–Fri 7:30am–5pm</p></li>
+        <li class="border-t border-white/20 p-7 md:border-t-0 md:border-l"><p class="eyebrow !text-sand">Email</p><a href={`mailto:${email}`} class="mt-2 block break-all font-display text-[22px] hover:text-peach sm:text-[24px]">{email}</a><p class="mt-2 text-[14px] text-stone">Replies within 1 business day</p></li>
+        <li class="border-t border-white/20 p-7 md:border-t-0 md:border-l"><p class="eyebrow !text-sand">Visit</p><p class="mt-2 font-display text-[24px]">Unit 4, 18 Sample St, Mulgrave VIC 3170</p><p class="mt-2 text-[14px] text-stone">By appointment [sample]</p></li>
+      </ul>
+    </div>
+  </section>
+  <section class="bg-cream scroll-mt-24" id="consult">
+    <div class="wrap sec grid gap-12 lg:grid-cols-[1fr_560px] lg:gap-20">
+      <div>
+        <p class="eyebrow">Opening hours</p>
+        <dl class="mt-4 border-t border-line">{hours.map(([k, v]) => <div class="flex justify-between gap-4 border-b border-line py-3.5 text-[15px]"><dt>{k}</dt><dd class="text-right font-semibold">{v}</dd></div>)}</dl>
+        <p class="eyebrow mt-10">Licences &amp; insurance</p>
+        <ul class="mt-4 border-t border-line">{lic.map((l) => <li class="border-b border-line py-3.5 text-[15px]">{l}</li>)}</ul>
+        <div class="relative mt-10 aspect-[632/340] w-full overflow-hidden bg-[#e7e1d4]" role="img" aria-label="Map placeholder showing our service area around Mulgrave">
+          <div class="absolute inset-0 bg-[linear-gradient(90deg,transparent_calc(33%-3px),#fff_calc(33%-3px),#fff_33%,transparent_33%,transparent_calc(66%-3px),#fff_calc(66%-3px),#fff_66%,transparent_66%),linear-gradient(0deg,transparent_calc(40%-3px),#fff_calc(40%-3px),#fff_40%,transparent_40%,transparent_calc(80%-3px),#fff_calc(80%-3px),#fff_80%,transparent_80%)]"></div>
+          <div class="absolute top-[12%] left-[18%] h-[75%] w-[60%] rounded-[50%] border-2 border-dashed border-teal bg-teal/15"></div>
+          {[['Glen Waverley', '20%', '24%'], ['Rowville', '48%', '67%'], ['Dandenong', '74%', '49%'], ['Berwick', '80%', '76%']].map(([n, t, l]) => <span class="absolute flex items-center gap-1.5 text-[11px] font-medium sm:text-[12px]" style={`top:${t};left:${l}`}><span class="size-2 rounded-full bg-ink"></span>{n}</span>)}
+          <span class="absolute top-[42%] left-[42%] flex items-center gap-2 text-[12px] font-bold sm:text-[14px]"><span class="size-3.5 rounded-full bg-copper"></span>Mulgrave — our base</span>
+          <span class="absolute bottom-2 left-3 text-[11px] text-muted">Map placeholder [sample]</span>
+        </div>
+      </div>
+      <QuoteForm title="Send us a message" id="contact" />
+    </div>
+  </section>
+  <section class="bg-white">
+    <div class="wrap sec">
+      <h2 class="h2">What happens after you get in touch.</h2>
+      <ol class="mt-12 grid gap-10 md:grid-cols-3">
+        {[['Within 1 business day', "We call to understand what's going on and book a time."], ['At the consult', 'About an hour. Roof check, room measurements, your questions answered.'], ['Within 3 days', 'Good / Better / Best options in writing, with running costs and rebates.']].map(([t, d], i) => <li><p class="font-display text-[40px] leading-none text-copper">{i + 1}</p><div class="mt-4 border-t border-line-2 pt-5"><h3 class="text-[24px]">{t}</h3><p class="mt-3 text-[15px] leading-relaxed text-muted">{d}</p></div></li>)}
+      </ol>
+    </div>
+  </section>
+</Base>

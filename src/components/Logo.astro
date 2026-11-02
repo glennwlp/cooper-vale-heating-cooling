@@ -1,0 +1,8 @@
+---
+interface Props { dark?: boolean }
+const { dark = false } = Astro.props;
+---
+<a href="/" class="inline-flex flex-col leading-none" aria-label="Cooper & Vale Heating & Cooling, home">
+  <span class:list={['font-display font-medium text-[22px] sm:text-[26px] tracking-[-0.01em]', dark ? 'text-white' : 'text-ink']}>Cooper <span class="text-copper">&amp;</span> Vale</span>
+  <span class:list={['mt-1.5 text-[10px] font-semibold tracking-[.22em] uppercase', dark ? 'text-stone' : 'text-muted']}>Heating &nbsp;·&nbsp; Cooling</span>
+</a>

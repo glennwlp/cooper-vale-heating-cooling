@@ -14,15 +14,15 @@ const cats = ['All', 'Comparisons', 'Ducted', 'Split systems', 'Gas upgrades', '
         <h1 class="h1">Heating &amp; Cooling Advice</h1>
         <p class="text-[17px] leading-relaxed text-stone-3 sm:text-[18px]">Straight answers from the people who design and install it. No jargon, no hard sell — just how it works in Melbourne homes.</p>
       </div>
-      <div class="mt-10 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+      <div class="mt-10 flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
         <ul class="flex flex-wrap gap-2">{cats.map((c, i) => <li><span class={`inline-block rounded-[2px] border px-4 py-2 text-[14px] font-semibold ${i === 0 ? 'border-copper bg-copper' : 'border-white/25'}`}>{c}</span></li>)}</ul>
-        <label class="flex w-full items-center gap-2 rounded-[2px] border border-white/25 px-4 py-2.5 lg:w-[286px]"><span class="text-stone" aria-hidden="true">⌕</span><span class="sr-only">Search articles</span><input type="search" placeholder="Search articles" class="w-full bg-transparent text-[14px] placeholder:text-stone focus:outline-none" /></label>
+        <label class="flex w-full items-center gap-2 rounded-[2px] border border-white/25 px-4 py-2.5 sm:w-[286px]"><span class="text-stone" aria-hidden="true">⌕</span><span class="sr-only">Search articles</span><input type="search" placeholder="Search articles" class="w-full bg-transparent text-[14px] placeholder:text-stone focus:outline-none" /></label>
       </div>
     </div>
   </section>
   <section class="bg-white">
     <div class="wrap sec">
-      <a href={featuredHref} class="group grid gap-8 lg:grid-cols-[720px_1fr] lg:items-center lg:gap-16">
+      <a href={featuredHref} class="group grid gap-8 lg:grid-cols-[minmax(0,720px)_minmax(0,1fr)] lg:items-center lg:gap-10 xl:gap-16">
         <div class="relative"><Pic name="cosy1" alt="Cosy living room (sample imagery)" class="aspect-[36/23] w-full" sizes="(min-width:1024px) 720px, 100vw" eager /><span class="absolute top-4 left-4 rounded-[2px] bg-copper px-2.5 py-1 text-[11px] font-bold tracking-[0.1em] text-white">FEATURED</span></div>
         <div>
           <p class="text-[12px] font-semibold tracking-[0.08em] text-teal-dark uppercase">Comparisons</p>

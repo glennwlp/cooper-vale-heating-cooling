@@ -17,7 +17,7 @@ const svc = [
   <PageHero crumbs={[['Home', '/'], ['Areas', '/#areas'], [a.name]]} title={`Ducted & Reverse Cycle Heating and Cooling in ${a.name}`} lead={a.lead} image={a.image} alt={a.imageAlt} stats={a.stats} />
   <TrustStrip />
   <section class="bg-white">
-    <div class="wrap sec grid gap-12 lg:grid-cols-[764px_1fr] lg:gap-24">
+    <div class="wrap sec grid gap-12 lg:grid-cols-[minmax(0,764px)_minmax(280px,1fr)] lg:gap-12 xl:gap-24">
       <div>
         <p class="eyebrow">Heating &amp; cooling in {a.name} {a.postcode}</p>
         <h2 class="h2 mt-3">{a.heading}</h2>
@@ -50,7 +50,7 @@ const svc = [
     </div>
   </section>
   <section class="bg-ink-2 text-white">
-    <div class="wrap sec grid gap-12 lg:grid-cols-[760px_1fr] lg:gap-20">
+    <div class="wrap sec grid gap-12 lg:grid-cols-[minmax(0,760px)_minmax(280px,1fr)] lg:gap-12 xl:gap-20">
       <div>
         <p class="eyebrow !text-sand">Services in {a.name}</p>
         <ul class="mt-4">{svc.map(([l, h]) => <li class="border-b border-white/15"><a href={h} class="flex items-center justify-between gap-4 py-4 font-display text-[19px] hover:text-peach sm:text-[21px]">{l} in {a.name}<span class="font-body text-[18px] text-sand">→</span></a></li>)}</ul>

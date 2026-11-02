@@ -36,7 +36,7 @@ const nav: { label: string; href: string; key: string; children?: { label: strin
   <header class="sticky top-0 z-40 border-b border-line bg-white">
     <div class="wrap flex h-[72px] items-center justify-between gap-4 lg:h-[83px]">
       <Logo />
-      <nav class="hidden items-center gap-8 xl:flex" aria-label="Main">
+      <nav class="hidden items-center gap-6 xl:flex 2xl:gap-8" aria-label="Main">
         {nav.map((n) => n.children ? (
           <div class="group relative">
             <a href={n.href} class:list={['inline-flex items-center gap-1 py-3 text-[15px]', active === n.key ? 'font-bold underline underline-offset-[6px]' : 'font-medium hover:text-copper']} aria-haspopup="true">{n.label}<span class="text-[10px]">▾</span></a>
@@ -48,8 +48,8 @@ const nav: { label: string; href: string; key: string; children?: { label: strin
           <a href={n.href} class:list={['py-3 text-[15px]', active === n.key ? 'font-bold underline underline-offset-[6px]' : 'font-medium hover:text-copper']} aria-current={active === n.key ? 'page' : undefined}>{n.label}</a>
         ))}
       </nav>
-      <div class="hidden items-center gap-7 xl:flex">
-        <a href={tel} class="text-[18px] font-bold">{phone}</a>
+      <div class="hidden items-center gap-5 whitespace-nowrap xl:flex 2xl:gap-7">
+        <a href={tel} class="text-[17px] 2xl:text-[18px] font-bold">{phone}</a>
         <a href="/contact/#consult" class="btn btn-copper !min-h-[43px] !px-5 !text-[15px]">Book a Free In-Home Quote</a>
       </div>
       <div class="flex items-center gap-2 xl:hidden">

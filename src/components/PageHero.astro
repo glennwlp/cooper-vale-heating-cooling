@@ -5,7 +5,7 @@ interface Props { crumbs: [string, string?][]; title: string; lead: string; imag
 const { crumbs, title, lead, image, alt, stats = [], ctaHref = '#consult' } = Astro.props;
 ---
 <section class="bg-ink text-white">
-  <div class="mx-auto grid max-w-[1440px] lg:grid-cols-[1fr_620px] xl:grid-cols-[820px_620px]">
+  <div class="mx-auto grid max-w-[1440px] lg:grid-cols-[1fr_620px] xl:grid-cols-[minmax(0,820fr)_minmax(0,620fr)]">
     <div class="wrap !mx-0 py-14 lg:py-[72px] lg:!pr-10">
       <nav aria-label="Breadcrumb" class="text-[13px] text-stone">
         {crumbs.map(([l, h], i) => <>{i > 0 && <span class="mx-2">/</span>}{h ? <a href={h} class="hover:text-white">{l}</a> : <span aria-current="page">{l}</span>}</>)}

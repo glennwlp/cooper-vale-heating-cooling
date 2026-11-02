@@ -29,7 +29,7 @@ const p = 'text-[17px] leading-[1.7] text-[#2f3a40] sm:text-[18px]';
       </div>
     </header>
     <div class="bg-cream">
-      <div class="wrap grid gap-12 py-14 lg:grid-cols-[316px_760px] lg:gap-20 lg:py-20">
+      <div class="wrap grid gap-12 py-14 lg:grid-cols-[260px_minmax(0,760px)] min-[1440px]:grid-cols-[316px_760px] lg:gap-20 lg:py-20">
         <aside class="lg:sticky lg:top-28 lg:self-start">
           <p class="eyebrow">In this article</p>
           <ol class="mt-4 border-t border-line">{toc.map(([id, t], i) => <li class="border-b border-line"><a href={`#${id}`} class="flex gap-3 py-3 text-[14px] font-medium hover:text-copper-dark"><span class="text-[13px] text-copper">0{i + 1}</span>{t}</a></li>)}</ol>
